@@ -1,7 +1,4 @@
-x = 5
-y = "Hello, World!"
+def hello_func(greeting, name = "You"):
+    return "{}, {} ".format(greeting, name)
 
-print(x)
-print(y)
-
-print("I am", 26, "years old.")
+print(hello_func(greeting="Hello", name= "Midenga"))
