@@ -1,0 +1,22 @@
+team,season,goals_scored,goals_conceded,shots,possessions,points
+Manchester City,2023,94,33,650,65,89
+Arsenal,2023,88,43,600,60,84
+Liverpool,2023,75,47,580,58,67
+Chelsea,2023,38,47,500,59,44
+Manchester United,2023,58,43,520,54,75
+Tottenham,2023,70,63,590,57,60
+Newcastle,2023,68,33,540,52,71
+Brighton,2023,72,53,560,55,62
+Aston Villa,2023,51,46,500,50,61
+West Ham,2023,42,55,480,49,40
+
+Manchester City,2024,96,34,670,66,91
+Arsenal,2024,91,29,620,61,89
+Liverpool,2024,86,41,600,59,82
+Chelsea,2024,77,63,590,58,63
+Manchester United,2024,57,58,510,53,60
+Tottenham,2024,74,61,600,56,66
+Newcastle,2024,85,62,570,54,60
+Brighton,2024,55,62,530,54,48
+Aston Villa,2024,76,61,550,52,68
+West Ham,2024,60,74,500,48,52
