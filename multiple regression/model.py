@@ -1,48 +1,73 @@
-from xml.parsers.expat import model
-
 import pandas as pd
-from sklearn import linear_model
+import matplotlib.pyplot as plt
 
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
+# Load dataset
+df = pd.read_csv(
+    r"C:\Users\agerm\OneDrive\Desktop\PYTHON\multiple regression\epl_data.csv"
+)
 
+print("DATASET:")
+print(df.head())
 
-# load the data set
-df = pd.read_csv(r"C:\Users\agerm\OneDrive\Desktop\PYTHON\multiple regression\epl_data.csv")
+# Features
+X = df[[
+    'wins',
+    'draws',
+    'losses',
+    'goals_scored',
+    'goals_conceded',
+    'goal_difference'
+]]
 
-# Features (independent variables)
-X = df[['goals_scored', 'goals_conceded', 'shots', 'possessions']]
-
-# Target (dependent variable)
+# Target
 y = df['points']
 
+# Split dataset
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    y,
+    test_size=0.2,
+    random_state=42
+)
+
 # Create model
-regr = linear_model.LinearRegression()
+model = LinearRegression()
 
-#train the model
+# Train model
+model.fit(X_train, y_train)
 
-regr.fit(X, y)
-print("Model trained successfully!\n")
+print("\nModel trained successfully!")
 
-# Predict new season (2025/2026 hypothetical stats)
-teams_2026 = {
-    "Manchester City": [95, 30, 680, 66],
-    "Arsenal": [97, 32, 690, 62],
-    "Liverpool": [88, 40, 650, 60],
-    "Chelsea": [80, 50, 680, 58],
-    "Manchester United": [90, 55, 550, 54]
+# Accuracy
+score = model.score(X_test, y_test)
+
+print(f"\nR² Score: {score:.2f}")
+
+# Future prediction
+future_teams = {
+    "Arsenal": [26, 8, 4, 78, 30, 48],
+    "Manchester City": [25, 8, 5, 82, 34, 48],
+    "Liverpool": [20, 10, 8, 70, 45, 25],
+    "Manchester United": [21, 9, 8, 68, 50, 18]
 }
 
 predictions = {}
 
-print("Predicted Points for 2025/2026:\n")
+print("\nPREDICTED FINAL POINTS:\n")
 
-for team, stats in teams_2026.items():
-    predicted_points = regr.predict([stats])[0]
-    predictions[team] = predicted_points
-    print(f"{team}: {predicted_points:.2f} points")
+for team, stats in future_teams.items():
 
-# Determine winner
+    prediction = model.predict([stats])[0]
+
+    predictions[team] = prediction
+
+    print(f"{team}: {prediction:.2f} points")
+
+# Winner
 winner = max(predictions, key=predictions.get)
 
-print("\n🏆 Predicted EPL Winner 2025/2026:")
+print("\n🏆 Predicted EPL Winner:")
 print(winner)
