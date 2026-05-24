@@ -109,7 +109,7 @@ new_employee = pd.DataFrame({
     'Gender': ['Female'],
     'Education': ['University'],
     'Department': ['IT'],
-    'Experience_Years': [4]
+    'Experience_Years': [10]
 })
 
 
