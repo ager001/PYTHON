@@ -70,14 +70,16 @@ class FraudBaggingClassifier:
 
     def predict(self, X):
         # Collect predictions from all models
-        all_predictions = np.array([model.predict(X) for model in self.models])
+        all_predictions = np.array([model.predict(X) 
+                                    for model in self.models])
 
         final_predictions = []
 
         # Majority voting
         for i in range(X.shape[0]):
             votes = all_predictions[:, i]
-            final_predictions.append(np.bincount(votes).argmax())
+            final_predictions.append
+            (np.bincount(votes).argmax())
 
         return np.array(final_predictions)
 
