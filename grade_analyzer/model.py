@@ -5,7 +5,7 @@
 import csv
 
 
-def read_grades(filename="grades.csv"):
+def read_grades(filename= r"C:\Projects\PYTHON\grade_analyzer\grades.csv"):
     """
     Reads grades from a CSV file and returns a list of grades.
     """
@@ -165,7 +165,7 @@ def main():
     Main program execution.
     """
 
-    filename = "grades.csv"
+    filename = r"C:\Projects\PYTHON\grade_analyzer\grades.csv"
 
     grades = read_grades(filename)
 
